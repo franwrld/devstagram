@@ -25,7 +25,7 @@
             @yield('contenido')
         </main>
         <!-- Footer -->
-        <footer class="text-center p-5 text-gray-500 font-bold uppercase">
+        <footer class="mt-10 text-center p-5 text-gray-500 font-bold uppercase">
             DevStagram &copy; - Todos los derechos reservados {{ now()->year; }}
         </footer>
         <!-- usar {{date('Y')}}; es igual a <?php "" ?> tambien se puede usar now() para imprimir fecha y hora actual o solo el year now()->year estos son helpers de laravel -->
