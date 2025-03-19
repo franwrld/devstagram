@@ -31,7 +31,13 @@
 
                 <div class="mb-5">
                     <label for="username" class="mb-2 block uppercase text-gray-500 font-bold">Nombre de usuario</label>  
-                    <input id="username" name="username" type="text" placeholder="Nombre de Usuario" class="border p-3 w-full rounded-lg"/>
+                    <input
+                        id="username" 
+                        name="username" 
+                        type="text" 
+                        placeholder="Nombre de Usuario" 
+                        class="border p-3 w-full rounded-lg @error('username') border-red-500 @enderror" value="{{ old('username')}}"
+                    />
                     @error('username')
                         <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">{{$message}}</p>
                     @enderror
@@ -39,7 +45,13 @@
 
                 <div class="mb-5">
                     <label for="email" class="mb-2 block uppercase text-gray-500 font-bold">Correo Electronico</label>     
-                    <input id="email" name="email" type="email" placeholder="Correo electronico" class="border p-3 w-full rounded-lg"/>
+                    <input 
+                        id="email" 
+                        name="email" 
+                        type="email" 
+                        placeholder="Correo electronico" 
+                        class="border p-3 w-full rounded-lg @error('email') border-red-500 @enderror" value="{{ old('email')}}"
+                    />
                     @error('email')
                         <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">{{$message}}</p>
                     @enderror
@@ -47,7 +59,13 @@
 
                 <div class="mb-5">
                     <label for="password" class="mb-2 block uppercase text-gray-500 font-bold">Contraseña</label>     
-                    <input id="password" name="password" type="password" placeholder="Contraseña" class="border p-3 w-full rounded-lg"/>
+                    <input 
+                        id="password" 
+                        name="password" 
+                        type="password" 
+                        placeholder="Contraseña" 
+                        class="border p-3 w-full rounded-lg @error('password') border-red-500 @enderror"
+                    />
                     @error('password')
                         <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">{{$message}}</p>
                     @enderror
