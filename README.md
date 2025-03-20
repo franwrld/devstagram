@@ -8,6 +8,12 @@
 </p>
 
 ## About Laravel
+comandos usados en este proyecto
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p    
+composer require intervention/image ^2.7
+npm install --save dropzone
+git clone https://github.com/MarcoGomesr/laravel-validation-en-espanol.git lang
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 

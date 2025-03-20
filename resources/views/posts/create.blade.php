@@ -22,7 +22,7 @@
         </div>
 
         <div class="md:w-1/2 p-10 bg-white rounded-lg shadow-lg mt-10 md:mt-0">
-            <form action="{{ route('register') }}" method="POST" novalidate>
+            <form action="{{ route('posts.store') }}" method="POST" novalidate>
                 @csrf
 
                 <div class="mb-5">
@@ -50,6 +50,14 @@
                         {{ old('descripcion')}}
                     </textarea>
                     @error('descripcion')
+                        <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">{{$message}}</p>
+                    @enderror
+                </div>
+
+                <!-- Almacenar imgen -->
+                <div class="mb-5">
+                    <input name="imagen" type="hidden"/>
+                    @error('imagen')
                         <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">{{$message}}</p>
                     @enderror
                 </div>
