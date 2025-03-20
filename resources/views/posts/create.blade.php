@@ -9,7 +9,7 @@
 @endpush
 
 @push('scripts')
-    <script src="{{ asset('js/app.js') }}"></script>
+    @vite('resources/js/app.js')
 @endpush
 
 @section('contenido')
