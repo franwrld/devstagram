@@ -6,6 +6,7 @@
 
 @push('styles')
     <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.min.css">
 @endpush
 
 @push('scripts')
@@ -56,7 +57,7 @@
 
                 <!-- Almacenar imgen -->
                 <div class="mb-5">
-                    <input name="imagen" type="hidden"/>
+                    <input name="imagen" type="hidden" value="{{ old('imagen') }}"/>
                     @error('imagen')
                         <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">{{$message}}</p>
                     @enderror

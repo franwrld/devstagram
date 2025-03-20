@@ -9,7 +9,20 @@ const dropzone = new Dropzone('#dropzone', {
     addRemoveLinks: true,
     dictRemoveFile: 'Borrar Archivo',
     maxFiles: 1,
-    uploadMultiple: false
+    uploadMultiple: false,
+    //Si hay una imagen en el dropzone que la mantenga
+    init: function() {
+        if(document.querySelector('[name="imagen"]').value.trim()) {
+            const imagenPublicada = {}
+            imagenPublicada.size = 1234;
+            imagenPublicada.name = document.querySelector('[name="imagen"]').value;
+
+            this.options.addedfile.call( this, imagenPublicada);
+            this.options.thumbnail.call(this, imagenPublicada, `/uploads/${imagenPublicada.name}`);
+
+            imagenPublicada.previewElement.classList.add('dz-success', 'dz-complete');
+        }
+    }
 });
 //Debug
 //dropzone.on('sending', function(file, xhr, formData) {
@@ -24,6 +37,7 @@ dropzone.on('success', function(file, response) {
 //dropzone.on('error', function(file, message) {
     //console.log(message);
 //});
-dropzone.on('removedFile', function() {
-    console.log("Archivo Eliminado");
+// Si el usuario elimina desde el dropzone la imagen que no se quede guardado en el value del input imagen que al eliminarlo vuelva a vacio
+dropzone.on('removedfile', function() {
+    document.querySelector('[name="imagen"]').value = '';
 });
