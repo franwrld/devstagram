@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('titulo')
-    Inicia Sesion en DevStagram
+    Inicia Sesión en DevStagram
 @endsection
 
 @section('contenido')
@@ -20,7 +20,7 @@
                 @endif
 
                 <div class="mb-5">
-                    <label for="email" class="mb-2 block uppercase text-gray-500 font-bold">Correo Electronico</label>     
+                    <label for="email" class="mb-2 block uppercase text-gray-500 font-bold">Correo Electrónico</label>     
                     <input 
                         id="email" 
                         name="email" 
@@ -45,6 +45,10 @@
                     @error('password')
                         <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">{{$message}}</p>
                     @enderror
+                </div>
+
+                <div class="mb-5">
+                    <input type="checkbox" name="remember"> <label for="password" class="uppercase text-gray-500 text-sm">Mantener la sesión abierta</label>
                 </div>
 
                 <input type="submit" value="Ingresar" class="bg-sky-600 hover:bg-sky-700 transition-colors cursor-pointer uppercase font-bold
