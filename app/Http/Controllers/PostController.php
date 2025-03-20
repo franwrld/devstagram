@@ -14,8 +14,13 @@ class PostController extends Controller
     }
     public function index(User $user)
     {
+        // Hacer referencia a Post modelo para saber que ID va a obtener para mostrar los posts de ese usuario
+        $posts = Post::where('user_id', $user->id)->paginate(10);
+
         return view('dashboard', [
-            'user' => $user
+            'user' => $user,
+            'posts' => $posts
+            //posts para decirle a la vista que info mostrar
         ]);
     }
 
@@ -32,12 +37,12 @@ class PostController extends Controller
             'imagen' => 'required'
         ]);
 
-        Post::create([
+        /*Post::create([
             'titulo' => $request->titulo,
             'descripcion' => $request->descripcion,
             'imagen' => $request->imagen,
             'user_id' => auth()->user()->id
-        ]);
+        ]);*/
 
         /*
         Otra Forma de guardar
@@ -48,6 +53,18 @@ class PostController extends Controller
         $post->user_id = auth()->user()->id;
         $post->save();
         */
+
+        /*
+        Otra Forma de guardar con relaciones
+        
+        */
+
+        $request->user()->posts()->create([
+            'titulo' => $request->titulo,
+            'descripcion' => $request->descripcion,
+            'imagen' => $request->imagen,
+            'user_id' => auth()->user()->id
+        ]);
 
         return redirect()->route('posts.perfil', auth()->user()->username );
     }

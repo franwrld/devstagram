@@ -16,4 +16,9 @@ class Post extends Model
         'imagen',
         'user_id'
     ];
+
+    // Crear relacion
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
 }
