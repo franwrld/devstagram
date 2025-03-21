@@ -18,7 +18,12 @@ class Post extends Model
     ];
 
     // Crear relacion
+    // Un Post pertenece a un usuario
     public function user() {
         return $this->belongsTo(User::class);
+    }
+    // Un post puede tener muchos comentarios
+    public function comentarios() {
+        return $this->hasMany(Comentario::class);
     }
 }
