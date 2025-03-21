@@ -42,16 +42,22 @@
                     <span class="font-normal"> Publicaciones</span>
                 </p>
                 <!-- Boton Seguir o dejar de seguir -->
-                @auth           
-                    <form action="" method="POST">
-                        @csrf
-                        <input value="Seguir" type="submit" class="bg-blue-600 text-white uppercase rounded-lg px-3 py-1 text-xs font-bold cursor-pointer"/>
-                    </form>
-
-                    <form action="" method="POST">
-                        @csrf
-                        <input value="Dejar de seguir" type="submit" class="bg-red-600 text-white uppercase rounded-lg px-3 py-1 text-xs font-bold cursor-pointer"/>
-                    </form>
+                @auth
+                    @if( $user->id !== auth()->user()->id )
+                        <!-- $user es la persona a quien estamos visitando su perfil y auth()->user es la persona que lo esta visitando, funcion siguiendo en modelo User -->
+                        @if(!$user->siguiendo( auth()->user() ))     
+                            <form action="{{ route('users.follow', $user) }}" method="POST">
+                                @csrf
+                                <input value="Seguir" type="submit" class="bg-blue-600 text-white uppercase rounded-lg px-3 py-1 text-xs font-bold cursor-pointer"/>
+                            </form>
+                        @else
+                            <form action="{{ route('users.unfollow', $user) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <input value="Dejar de seguir" type="submit" class="bg-red-600 text-white uppercase rounded-lg px-3 py-1 text-xs font-bold cursor-pointer"/>
+                            </form>
+                        @endif
+                    @endif
                 @endauth
 
             </div>

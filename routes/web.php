@@ -34,17 +34,16 @@ Route::post('/imagenes', [ImagenController::class, 'store'])->name('imagenes.sto
 
 
 // Routas con variables al final _______________________________________________________________________________________
-
+//  Siguiendo a usuarios
+Route::post('/{user:username}/follow', [FollowerController::class, 'store'])->name('users.follow');
+Route::delete('/{user:username}/unfollow', [FollowerController::class, 'destroy'])->name('users.unfollow');
 // Perfil usuario
 Route::get('/{user:username}', [PostController::class, 'index'])->name('posts.perfil');
-//Posts
+// Posts
 Route::get('/{user:username}/posts/{post}', [PostController::class, 'show'])->name('posts.show');
 Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
 // Comentarios
 Route::post('/{user:username}/posts/{post}', [ComentarioController::class, 'store'])->name('comentarios.store');
-//Likes
+// Likes
 Route::post('/posts/{post}/likes', [LikeController::class, 'store'])->name('posts.likes.store');
 Route::delete('/posts/{post}/likes', [LikeController::class, 'destroy'])->name('posts.likes.destroy');
-//  Siguiendo a usuarios
-Route::post('/{user:username}/follow', [FollowerController::class, 'store'])->name('users.follow');
-Route::delete('/{user:username}/unfollow', [FollowerController::class, 'destroy'])->name('users.unfollow');

@@ -6,5 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Follower extends Model
 {
-    //
+    // Guardar info a la BD
+    protected $fillable = [
+        'user_id',
+        'follower_id'
+    ];
 }

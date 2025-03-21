@@ -31,6 +31,14 @@ class User extends Authenticatable
     public function likes() {
         return $this->hasMany(Like::class);
     }
+    // Aqui no estamos siguiendo las convenciones de Laravel
+    // Almacenar seguidores de un usuario
+    public function followers()
+    {
+        return $this->belongsToMany(User::class, 'followers', 'user_id', 'follower_id');
+    }
+    // Almacenar los que seguimos
+
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -52,5 +60,10 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+    // Comprobar si un usuario ya sigue a otro
+    public function siguiendo(User $user)
+    {
+        return $this->followers->contains( $user->id );
     }
 }
