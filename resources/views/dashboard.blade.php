@@ -9,7 +9,10 @@
         <div class="w-full md:w-8/12 lg:w-6/12 flex flex-col items-center md:flex-row">
             <!-- Foto de Perfil -->
             <div class="w-8/12 lg:w-6/12 px-5">
-                <img src="{{ asset('img/usuario.svg')}}" alt="imagen-usuario">
+                <img src="{{
+                        // Si se cumple $user->imagen condicion Si hay imagen en perfil asociada al usuario que la muestre si no : que muestre la imagen por default
+                        $user->imagen ? asset('perfiles') . '/' . $user->imagen : asset('img/usuario.svg') 
+                    }}" alt="imagen-usuario">
             </div>
             <!-- Informacion Perfil -->
             <div class="md:w-8/12 lg:w-6/12 px-5 flex flex-col items-center md:justify-center md:items-start md:py-10 py-10">
@@ -35,8 +38,22 @@
                 </p>
 
                 <p class="text-gray-800 text-sm mb-3 font-bold ">
-                    0 <span class="font-normal"> Publicaciones</span>
+                    {{ $user->posts->count() }}
+                    <span class="font-normal"> Publicaciones</span>
                 </p>
+                <!-- Boton Seguir o dejar de seguir -->
+                @auth           
+                    <form action="" method="POST">
+                        @csrf
+                        <input value="Seguir" type="submit" class="bg-blue-600 text-white uppercase rounded-lg px-3 py-1 text-xs font-bold cursor-pointer"/>
+                    </form>
+
+                    <form action="" method="POST">
+                        @csrf
+                        <input value="Dejar de seguir" type="submit" class="bg-red-600 text-white uppercase rounded-lg px-3 py-1 text-xs font-bold cursor-pointer"/>
+                    </form>
+                @endauth
+
             </div>
 
         </div>
