@@ -40,7 +40,7 @@
                     @endif         
                 @endauth
                 <!-- Contar cuantos Likes tiene -->
-                <p>{{ $post->likes->count() }} Me Gusta</p>
+                <p class="font-bold">{{ $post->likes->count() }} <span class="font-normal">Me Gusta</span></p>
             </div>
 
             <div>
