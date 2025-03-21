@@ -42,8 +42,9 @@
                 <!-- Contar cuantos Likes tiene -->
                 <p class="font-bold">{{ $post->likes->count() }} <span class="font-normal">Me Gusta</span></p>
             </div>
-
+            <!-- Nombre de usuario y datetime -->
             <div>
+                
                 <p class="font-bold">{{ $post->user->username }}</p>
                 <!-- diffForHumnas usa Larvel de la libreria Carbon para formatear las fechas -->
                 <p class="text-sm text-gray-500">{{ $post->created_at->diffForHumans() }}</p>

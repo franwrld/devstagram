@@ -16,7 +16,7 @@ class PostController extends Controller
     public function index(User $user)
     {
         // Hacer referencia a Post modelo para saber que ID va a obtener para mostrar los posts de ese usuario
-        $posts = Post::where('user_id', $user->id)->paginate(10);
+        $posts = Post::where('user_id', $user->id)->latest()->paginate(10);
 
         return view('dashboard', [
             'user' => $user,
