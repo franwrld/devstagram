@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class PostController extends Controller
 {
@@ -76,5 +77,19 @@ class PostController extends Controller
             'post' => $post,
             'user' => $user
         ]);
+    }
+
+    // Delete post
+    public function destroy(Post $post)
+    {
+        $this->authorize('delete', $post);
+        $post->delete();
+        //Eliminar Imagen
+        $imagen_path = public_path('uploads/' . $post->imagen);
+        // Importar Facade File
+        if (File::exists($imagen_path)) {
+            unlink($imagen_path);
+        }
+        return redirect()->route('posts.perfil', auth()->user()->username);
     }
 }
