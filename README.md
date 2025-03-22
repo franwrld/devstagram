@@ -22,3 +22,5 @@ php artisan route:list
 php artisan view:clear
 
 composer require livewire/livewire
+
+Retos: Agregar livewire a caja de comentarios, agregar campo cambiar email en editar perfil, y enlace a nombre de usuarios en posts
