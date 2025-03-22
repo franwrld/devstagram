@@ -23,4 +23,10 @@ php artisan view:clear
 
 composer require livewire/livewire
 
+Deploy
+https://blogjc.vercel.app/post/easy-deploy-php-laravel
+
+despues de publicado en DOMcloud en webssh 
+moverse a cd ~/public_html y ejecutar php artisan livewire:publish para que funcione livewire y no de errores
+
 Retos: Agregar livewire a caja de comentarios, agregar campo cambiar email en editar perfil, y enlace a nombre de usuarios en posts
