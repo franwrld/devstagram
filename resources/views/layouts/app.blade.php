@@ -7,6 +7,7 @@
         @stack('scripts')
         <title>Devstagram - @yield('titulo')</title>
         @vite('resources/css/app.css')
+        @livewireStyles
     </head>
     <body>
         <!-- Header -->
@@ -56,5 +57,7 @@
             DevStagram &copy; - Todos los derechos reservados {{ now()->year; }}
         </footer>
         <!-- usar {{date('Y')}}; es igual a <?php "" ?> tambien se puede usar now() para imprimir fecha y hora actual o solo el year now()->year estos son helpers de laravel -->
+        
+        @livewireScripts
     </body>
 </html>
