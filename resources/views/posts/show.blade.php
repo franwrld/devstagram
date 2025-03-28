@@ -43,8 +43,10 @@
             </div>
             <!-- Nombre de usuario y datetime -->
             <div>
+                <a href="{{ route('posts.perfil', $post->user->username) }}">
+                    <p class="font-bold">{{ $post->user->username }}</p>
+                </a>
                 
-                <p class="font-bold">{{ $post->user->username }}</p>
                 <!-- diffForHumnas usa Larvel de la libreria Carbon para formatear las fechas -->
                 <p class="text-sm text-gray-500">{{ $post->created_at->diffForHumans() }}</p>
                 <p class="mt-5">{{ $post->descripcion }}</p>
